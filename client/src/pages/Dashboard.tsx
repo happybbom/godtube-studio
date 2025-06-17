@@ -76,14 +76,17 @@ export default function Dashboard() {
         )}
       </div>
 
+      {/* Projects Table */}
+      <div className="mb-8">
+        <ProjectsTable />
+      </div>
+
       {/* Charts and Tables Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <ActivityChart />
         <RecentActivity />
       </div>
 
-      {/* Projects Table */}
-      <ProjectsTable />
     </div>
   );
 }

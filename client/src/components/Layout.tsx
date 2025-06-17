@@ -29,7 +29,7 @@ export function Layout({ children }: LayoutProps) {
                   <div className="w-8 h-8 bg-replit-blue rounded-lg flex items-center justify-center">
                     <span className="text-white text-sm font-bold">R</span>
                   </div>
-                  <span className="text-xl font-bold text-white">ReplitDash</span>
+                  <span className="text-xl font-bold text-white">GodTube Studio</span>
                 </div>
                 <button
                   onClick={closeMobileMenu}
@@ -53,7 +53,7 @@ export function Layout({ children }: LayoutProps) {
               <div className="w-8 h-8 bg-replit-blue rounded-lg flex items-center justify-center">
                 <span className="text-white text-sm font-bold">R</span>
               </div>
-              <span className="text-xl font-bold text-white">ReplitDash</span>
+              <span className="text-xl font-bold text-white">GodTube Studio</span>
             </div>
             <button
               onClick={toggleMobileMenu}
