@@ -39,3 +39,11 @@
 데이터 포맷	JSON
 비동기 처리	async/await 사용
 프론트엔드 연결	React (TypeScript, TSX 기반) 프론트에서 fetch나 axios 등으로 API 호출
+
+
+✅ 소스변경 시 git 반영하면 render(프론트엔드 배포 및 호스팅) 배포되도록 구성
+    https://godtube-studio.onrender.com/
+
+    PS C:\myProject\godtube-studio> git add .
+    PS C:\myProject\godtube-studio> git commit -m "comit memo"
+    PS C:\myProject\godtube-studio> git push -u origin main
