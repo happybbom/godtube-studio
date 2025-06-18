@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { getAllUsers, getUserById } from './models/userModel.js';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Dashboard metrics
@@ -10,6 +11,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(metrics);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch metrics" });
+    }
+  });
+
+  // Users
+  /*app.get("/api/users", async (req, res) => {
+    try {
+      const users = await storage.getAllUsers();
+      res.json(users);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch users" });
+    }
+  });*/
+
+  // Users DB조회
+  app.get("/api/users", async (req, res) => {
+    try {
+      const users = await getAllUsers();
+      res.json(users);
+    } catch (err: unknown) {
+      const error = err as Error; // 또는 `as any` 로도 가능
+      console.error('🔴 DB 조회 중 에러 발생:', error.message);
+      res.status(500).json({
+        error: 'DB 조회 실패',
+        message: error.message,
+      });
+    }
+  });
+
+  app.get("/api/users/:id", async (req, res) => {
+    try {
+      const user = await getUserById(parseInt(req.params.id));
+      if (user) res.json(user);
+      else res.status(404).json({ error: 'User not found' });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch user" });
     }
   });
 
@@ -23,6 +59,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // ID로 조회
   app.get("/api/projects/:id", async (req, res) => {
     try {
       const id = parseInt(req.params.id);
@@ -53,29 +90,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(activities);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch activities" });
-    }
-  });
-
-  // Users
-  app.get("/api/users", async (req, res) => {
-    try {
-      const users = await storage.getAllUsers();
-      res.json(users);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to fetch users" });
-    }
-  });
-
-  app.get("/api/users/:id", async (req, res) => {
-    try {
-      const id = parseInt(req.params.id);
-      const user = await storage.getUser(id);
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-      res.json(user);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to fetch user" });
     }
   });
 

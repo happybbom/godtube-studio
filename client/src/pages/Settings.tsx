@@ -17,8 +17,8 @@ export default function Settings() {
   });
 
   const [profile, setProfile] = useState({
-    firstName: "John",
-    lastName: "Doe",
+    firstname: "John",
+    lastname: "Doe",
     email: "john@example.com",
     username: "johndoe",
   });
@@ -74,9 +74,9 @@ export default function Settings() {
             <div>
               <Label htmlFor="firstName" className="text-slate-300">First Name</Label>
               <Input
-                id="firstName"
-                value={profile.firstName}
-                onChange={(e) => handleProfileChange("firstName", e.target.value)}
+                id="firstname"
+                value={profile.firstname}
+                onChange={(e) => handleProfileChange("firstname", e.target.value)}
                 className="bg-slate-700 border-slate-600 text-slate-100 mt-1"
               />
             </div>
@@ -84,7 +84,7 @@ export default function Settings() {
               <Label htmlFor="lastName" className="text-slate-300">Last Name</Label>
               <Input
                 id="lastName"
-                value={profile.lastName}
+                value={profile.lastname}
                 onChange={(e) => handleProfileChange("lastName", e.target.value)}
                 className="bg-slate-700 border-slate-600 text-slate-100 mt-1"
               />

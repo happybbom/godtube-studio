@@ -7,11 +7,11 @@ export const users = pgTable("users", {
   username: text("username").notNull().unique(),
   email: text("email").notNull().unique(),
   password: text("password").notNull(),
-  firstName: text("first_name").notNull(),
-  lastName: text("last_name").notNull(),
+  firstname: text("first_name").notNull(),
+  lastname: text("last_name").notNull(),
   avatar: text("avatar"),
   role: text("role").notNull().default("member"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  createdAt: timestamp("reg_dt").defaultNow().notNull(),
 });
 
 export const projects = pgTable("projects", {
@@ -23,7 +23,7 @@ export const projects = pgTable("projects", {
   ownerId: integer("owner_id").references(() => users.id).notNull(),
   memberCount: integer("member_count").notNull().default(1),
   lastUpdated: timestamp("last_updated").defaultNow().notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  createdAt: timestamp("reg_dt").defaultNow().notNull(),
 });
 
 export const activities = pgTable("activities", {
@@ -32,7 +32,7 @@ export const activities = pgTable("activities", {
   description: text("description").notNull(),
   userId: integer("user_id").references(() => users.id),
   projectId: integer("project_id").references(() => projects.id),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  createdAt: timestamp("reg_dt").defaultNow().notNull(),
 });
 
 export const metrics = pgTable("metrics", {

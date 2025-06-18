@@ -1,3 +1,4 @@
+// vite는 빠르고 가벼운 프론트엔드 개발 환경을 제공하는 빌드 도구
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";

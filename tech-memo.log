@@ -1,0 +1,41 @@
+✅ Vite란?
+    빠르고 가벼운 프론트엔드 개발 환경을 제공하는 빌드 도구
+
+    🚀 Vite의 장점
+    1.빠른 실행 속도 – 개발 서버가 거의 즉시 실행됨
+    2.모듈 단위 로딩 – 필요한 파일만 동적으로 불러옴
+    3.자동 TypeScript 지원
+    4.간단한 설정 – vite.config.ts 하나면 충분
+    5.다양한 프레임워크 지원
+        - React
+        - Vue
+        - Svelte
+        - Lit 등
+
+    🏗️ 빌드 및 배포 (Render 등에)
+        - dist 폴더에 정적 파일 생성
+        - Render의 Static Site로 배포 가능
+        - Build Command: npm run build
+        - Publish Directory: dist
+
+    📌 요약
+        - Vite = 빠르고 가벼운 React/TS 개발 환경
+        - Webpack보다 빠르고 설정도 간단
+        - .tsx 프로젝트에 특히 적합
+        - Render 같은 무료 호스팅과도 잘 어울림
+
+✅ package.json은 Node.js 프로젝트의 핵심 설정 파일     
+    역할	                        설명
+📦 의존성 관리	        설치한 모든 패키지를 기록합니다 (dependencies, devDependencies)
+🔧 스크립트 설정	    npm run dev 같은 명령어를 정의합니다
+💬 프로젝트 정보	    이름, 버전, 설명 등을 포함합니다
+📜 빌드/런타임 설정	    타입스크립트, Babel 등과의 연결 지점을 설정하기도 합니다
+
+✅ 개발환경 요약:
+백엔드 프레임워크	Express.js (Node.js 기반)
+데이터베이스	PostgreSQL
+쿼리 방식	SQL 직접 작성 (pool.query(...))
+통신 방식	REST API (GET /api/users)
+데이터 포맷	JSON
+비동기 처리	async/await 사용
+프론트엔드 연결	React (TypeScript, TSX 기반) 프론트에서 fetch나 axios 등으로 API 호출

@@ -15,10 +15,10 @@ export default function Team() {
   });
 
   const filteredUsers = users?.filter(user =>
-    user.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    user.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    user.username.toLowerCase().includes(searchQuery.toLowerCase())
+    (user.firstname?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+    (user.lastname?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+    (user.email?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+    (user.username?.toLowerCase() || '').includes(searchQuery.toLowerCase())
   );
 
   const getRoleColor = (role: string) => {
@@ -36,8 +36,11 @@ export default function Team() {
     }
   };
 
-  const getInitials = (firstName: string, lastName: string) => {
-    return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+  const getInitials = (firstname: string, lastname: string) => {
+    const firstInitial = firstname?.charAt(0) || '';
+    const lastInitial = lastname?.charAt(0) || '';
+    return `${firstInitial}${lastInitial}`.toUpperCase();
+    //return `${firstname.charAt(0)}${lastname.charAt(0)}`.toUpperCase();
   };
 
   const getAvatarColor = (index: number) => {
@@ -107,12 +110,12 @@ export default function Team() {
                   <div className="flex items-center space-x-4">
                     <div className={`w-12 h-12 ${getAvatarColor(index)} rounded-full flex items-center justify-center`}>
                       <span className="text-white font-medium">
-                        {getInitials(user.firstName, user.lastName)}
+                        {getInitials(user.firstname, user.lastname)}
                       </span>
                     </div>
                     <div>
                       <CardTitle className="text-white text-lg">
-                        {user.firstName} {user.lastName}
+                        {user.firstname} {user.lastname}
                       </CardTitle>
                       <p className="text-slate-400 text-sm">@{user.username}</p>
                     </div>
