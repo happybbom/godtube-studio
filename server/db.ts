@@ -18,15 +18,18 @@ export default pool;
 import pkg from 'pg';
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: '.env.local' });
 const { Pool } = pkg;
 
 const pool = new Pool({
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT || '5432'),
   user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  password: process.env.DB_PASS,
   database: process.env.DB_NAME,
+  /*ssl: {
+    rejectUnauthorized: false, // Railway는 SSL 연결 필요
+  },*/
 });
 
 export default pool;

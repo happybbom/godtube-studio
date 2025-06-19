@@ -31,6 +31,28 @@
 💬 프로젝트 정보	    이름, 버전, 설명 등을 포함합니다
 📜 빌드/런타임 설정	    타입스크립트, Babel 등과의 연결 지점을 설정하기도 합니다
 
+
+✅ 아키텍처 구성 개요
+    [User Browser]
+        ↓
+    [Render (Vite/React/Next 프론트)]
+        ↓ API 요청
+    [Render (FastAPI/Flask/node Express 백엔드)]
+        ↓ DB 연결
+    [Railway PostgreSQL DB]
+
+✅ 구성 방식 요약
+🔵 Render (프론트)
+    vite, react, next 등 정적 또는 SSR 기반 프론트 호스팅
+    API 호출 시 https://<railway-app>.up.railway.app/api/... 등의 백엔드 주소로 요청
+
+🟢 Railway (백엔드 + DB)
+    FastAPI/Flask 등 자유롭게 구동 가능
+    Railway PostgreSQL과 .env 파일로 자동 연결
+    외부 접근 허용됨 → Render에서 API 호출 가능
+
+
+
 ✅ 개발환경 요약:
 백엔드 프레임워크	Express.js (Node.js 기반)
 데이터베이스	PostgreSQL
@@ -47,3 +69,13 @@
     PS C:\myProject\godtube-studio> git add .
     PS C:\myProject\godtube-studio> git commit -m "comit memo"
     PS C:\myProject\godtube-studio> git push -u origin main
+
+
+✅ Railway에서 PostgreSQL 세팅
+postgresql://postgres:PmWiwJhGNIVhUJFSTKqWMRlfUUovWOLY@metro.proxy.rlwy.net:44586/railway
+
+Raw psql command
+PGPASSWORD=PmWiwJhGNIVhUJFSTKqWMRlfUUovWOLY psql -h metro.proxy.rlwy.net -U postgres -p 44586 -d railway
+
+Railway CLI connect command
+railway connect Postgres

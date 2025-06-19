@@ -2,6 +2,10 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { getAllUsers, getUserById } from './models/userModel.js';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '.env.local' });
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Dashboard metrics
@@ -14,17 +18,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Users
-  /*app.get("/api/users", async (req, res) => {
-    try {
-      const users = await storage.getAllUsers();
-      res.json(users);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to fetch users" });
-    }
-  });*/
-
   // Users DB조회
+  //app.get(`${API_BASE}/api/users`, async (req, res) => {
   app.get("/api/users", async (req, res) => {
     try {
       const users = await getAllUsers();

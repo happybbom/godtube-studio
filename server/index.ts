@@ -1,10 +1,13 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
+import { registerRoutes } from "./routes.ts";
 import { setupVite, serveStatic, log } from "./vite";
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: '.env.local' });
+
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
+console.log("API_BASE :"+API_BASE);
 
 const app = express();  //Express 서버 시작
 app.use(cors());        //CORS(Cross-Origin Resource Sharing) 문제를 해결하기 위해 사용되는 Express 미들웨어, 프론트와 백엔드가 서로 다른 포트/도메인일 때
